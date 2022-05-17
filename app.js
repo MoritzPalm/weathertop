@@ -15,7 +15,7 @@ const routes = require("./routes");
 app.use("/", routes);
 
 app.listen(process.env.PORT, () => {
-    console.log(`Web App template listening on ${process.env.PORT}`);
+    console.log(`Web App listening on ${process.env.PORT}`);
 });
 
 module.exports = app;
