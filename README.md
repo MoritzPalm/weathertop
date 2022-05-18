@@ -1,6 +1,3 @@
-# web-app-template-1
+# Weathertop Website#
 
-A starter project for a web application.
-
-This is Web app template project using Node.js, Express, Handlebars and Bootstrap for the front end.
-It includes basic express setup, templating and routing.
+a weather-themed website with basic db-integration, logins, apis etc.
