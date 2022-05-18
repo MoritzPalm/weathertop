@@ -1,6 +1,12 @@
 {{> menu id="dashboard"}}
-{{>stations}}
-<div class="border p-2 my-2">
-  <h3>Dashboard</h3>
-  <p>Content goes here...</p>
-</div>
+<tbody>
+    {{#each stations.data}}
+        <tr>
+            <td>{{name}}</td>
+            <td> Wetter: {{weather}}</td>
+            <td>{{temperature}}</td>
+            <td>{{wind}}</td>
+            <td> {{pressure}}</td>
+        </tr>
+    {{/each}}
+</tbody>
