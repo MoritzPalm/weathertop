@@ -3,7 +3,7 @@ const winston = require("winston");
 const logger = winston.createLogger({
       level: 'info',
       format: winston.format.combine(
-          winston.format.label({ label: "Web app template" }),
+          winston.format.label({ label: "Weathertop app" }),
           // winston.format.timestamp(),
           winston.format.prettyPrint()
       ),
