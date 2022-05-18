@@ -1,22 +1,16 @@
 const logger = require("../utils/logger.js");
-
-const stations = {
-    data: [
-        {
-            name: "Regensburg",
-            weather: "800",
-            temperature: "20.32 Grad",
-            wind: "0.89 bft",
-            pressure: "1016 hpa",
-        },
-        {
-            name: "Kelheim",
-            weather: "600",
-            temperature: "0.23 Grad",
-            wind: "20 bft",
-            pressure: "2000 hpa",
-        },
-    ],
+const datastore = require("./datastore.js");
+const datastoreClient = datastore.getDatastore();
+const stationstore = {
+    async getAllStations() {
+        const query = 'select * from station';
+        try {
+            let result = await datastoreClient.query(query);
+            return result.rows;
+        } catch (e) {
+            logger.error("Error fetching all stations", e);
+        }
+    }
 };
 
-module.exports = stations;
+module.exports = stationstore;
