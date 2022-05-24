@@ -3,7 +3,7 @@ const datastore = require("./datastore.js");
 const datastoreClient = datastore.getDatastore();
 const stationstore = {
     async getAllStations() {
-        const query = 'select * from station';
+        const query = 'select * from (station join recordings on station.id = recordings.station_id)';
         try {
             let result = await datastoreClient.query(query);
             return result.rows;
