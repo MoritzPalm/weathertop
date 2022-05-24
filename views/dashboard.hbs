@@ -1,11 +1,14 @@
 {{> menu id="dashboard"}}
-<div class="border p-2 my-2">
-    {{#each stations}}
-        <div class="border p-2 my-2">
-            <h4>{{name}}</h4>
-            <h4>Latitude: {{lat}}</h4>
-            <h4> Longitude: {{long}}</h4>
-            <h4> Weather: {{weather}}</h4>
-        </div>
-    {{/each}}
+<div class="container">
+    <div class="border p-2 my-2">
+        {{#each stations}}
+            <div class="row">
+                <div class="col"><h4>{{name}}</h4></div>
+                <div class ="col"><h4>Wetter</h4> {{weather}}</div>
+                <div class = "col"><h4>Temperatur</h4>{{temp}} Grad</div>
+                <div class = "col"><h4>Wind</h4>{{wind}} bft</div>
+                <div class = "col"><h4>Luftdruck</h4>{{pressure}} hpa</div>
+            </div>
+        {{/each}}
+    </div>
 </div>
