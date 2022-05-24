@@ -1,14 +1,48 @@
 {{> menu id="dashboard"}}
 <div class="container">
-    <div class="border p-2 my-2">
-        {{#each stations}}
+    {{#each stations}}
+        <div class="border p-2 my-2">
             <div class="row">
-                <div class="col"><h4>{{name}}</h4></div>
-                <div class ="col"><h4>Wetter</h4> {{weather}}</div>
-                <div class = "col"><h4>Temperatur</h4>{{temp}} Grad</div>
-                <div class = "col"><h4>Wind</h4>{{wind}} bft</div>
-                <div class = "col"><h4>Luftdruck</h4>{{pressure}} hpa</div>
+                <div class="col">
+                    <div class="card text-white bg-dark mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{name}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class ="col">
+                    <div class="card text-white bg-dark mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Wetter</h5>
+                            <p class="card-text"> {{weather}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class ="col">
+                    <div class="card text-white bg-dark mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Temperatur</h5>
+                            <p class="card-text"> {{temp}} Grad</p>
+                        </div>
+                    </div>
+                </div>
+                <div class ="col">
+                    <div class="card text-white bg-dark mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Wind</h5>
+                            <p class="card-text"> {{wind}} bft</p>
+                        </div>
+                    </div>
+                </div>
+                <div class ="col">
+                    <div class="card text-white bg-dark mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Luftdruck</h5>
+                            <p class="card-text"> {{pressure}} hpa</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        {{/each}}
-    </div>
+        </div>
+    {{/each}}
 </div>
