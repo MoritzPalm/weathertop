@@ -8,9 +8,12 @@ const station = {
         logger.info('Station id = ' + stationId);
         const station = await stationStore.getStation(stationId)
         const recordings = await recordingstore.getRecordingsforStation(stationId)
+        const currRecording = await recordingstore.getLatestRecordingsforStation(stationId)
+
         const viewData = {
             title: 'Station',
             station: station,
+            currRecording: currRecording,
             recordings: recordings
         };
         response.render('station', viewData);

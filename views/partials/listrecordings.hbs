@@ -1,4 +1,20 @@
-<div class="border p-2 my-2">
-    <h2 class="text-center">{{station id}}test</h2>
-    {{> listrecordings}}
-</div>
+{{#each recordings}}
+    <tr>
+        <td>
+            {{created_at}}
+        </td>
+        <td>
+            {{weather}}
+        </td>
+        <td>
+            {{temp}}
+        </td>
+        <td>
+            {{wind}}
+        </td>
+        <td>
+            {{pressure}}
+        </td>
+    </tr>
+
+{{/each}}

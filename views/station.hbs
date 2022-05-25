@@ -1,13 +1,67 @@
-<table class="table">
-    <thead>
-    <tr>
-        <th>Wetter</th>
-        <th>Temperatur</th>
-        <th>Wind</th>
-        <th>Luftdruck</th>
-    </tr>
-    </thead>
-    <tbody>
+{{> menu id="station"}}
+<div class="container">
+    <div class="border p-2 my-2">
+        {{#each currRecording}}
+        <div class="row">
+            <div class="col">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{name}}</h5>
+                    </div>
 
-    </tbody>
-</table>
+                </div>
+            </div>
+            <div class ="col">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Wetter</h5>
+                        <p class="card-text"> {{weather}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class ="col">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Temperatur</h5>
+                        <p class="card-text"> {{temp}} Grad</p>
+                    </div>
+                </div>
+            </div>
+            <div class ="col">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Wind</h5>
+                        <p class="card-text"> {{wind}} bft</p>
+                    </div>
+                </div>
+            </div>
+            <div class ="col">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Luftdruck</h5>
+                        <p class="card-text"> {{pressure}} hpa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Wetter</th>
+            <th>Temperatur</th>
+            <th>Wind</th>
+            <th>Luftdruck</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {{> listrecordings}}
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -3,7 +3,7 @@ const datastore = require("./datastore.js");
 const dataStoreClient = datastore.getDatastore();
 const stationstore = {
     async getAllStations() {
-        const query = 'select * from (station join recordings on station.id = recordings.station_id)';
+        const query = 'select distinct on (station_id) * from station join recordings on station.id = recordings.station_id ';
         try {
             let result = await dataStoreClient.query(query);
             return result.rows;
@@ -18,7 +18,7 @@ const stationstore = {
             let result = await dataStoreClient.query(query, values);
             return result.rows[0];
         } catch (e) {
-            logger.error("Error fetching station", e);
+            logger.error("Error fetching station id", e);
         }
     },
 };
