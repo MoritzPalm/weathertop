@@ -4,7 +4,7 @@ const logger = require("../utils/logger.js");
 
 const recordingStore = {
     async getRecordingsforStation(stationId) {
-        const query = 'select * from recordings where station_id=$1';
+        const query = 'select * from recordings where station_id=$1 order by created_at desc';
         const values = [stationId];
         try {
             let result = await dataStoreClient.query(query, values);

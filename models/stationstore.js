@@ -3,7 +3,7 @@ const datastore = require("./datastore.js");
 const dataStoreClient = datastore.getDatastore();
 const stationstore = {
     async getAllStations() {
-        const query = 'select distinct on (station_id) * from station join recordings on station.id = recordings.station_id ';
+        const query = 'select * from (select distinct on (station_id) * from station join recordings on station.id = recordings.station_id order by station_id, created_at desc) as statrec order by created_at desc ';
         try {
             let result = await dataStoreClient.query(query);
             return result.rows;
