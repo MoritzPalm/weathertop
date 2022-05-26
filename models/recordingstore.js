@@ -31,6 +31,15 @@ const recordingStore = {
         } catch (e) {
             logger.error("Unable to remove recording from station", e);
         }
+    },
+    async addRecording(stationId, newRecording) {
+        const query = 'insert into recordings (station_id, weather, temp, windspeed, pressure, winddirection) values ($1,$2,$3,$4,$5,$6)';
+        const values = [newRecording.station_id, newRecording.weather, newRecording.temp, newRecording.windspeed, newRecording.pressure, newRecording.winddirection];
+        try {
+            await dataStoreClient.query(query,values);
+        } catch (e) {
+            logger.error("Error adding recording", e);
+        }
     }
 };
 

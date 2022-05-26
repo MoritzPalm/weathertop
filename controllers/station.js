@@ -26,6 +26,20 @@ const station = {
         await recordingstore.removeRecording(recordingId);
         response.redirect("/station/" + stationId);
     },
+    async addRecording(request, response) {
+        const stationId = request.params.id;
+        const newRecording = {
+            station_id: Number(stationId),
+            weather: Number(request.body.weather),
+            temp: Number(request.body.temp),
+            windspeed: Number(request.body.windspeed),
+            pressure: Number(request.body.pressure),
+            winddirection: Number(request.body.winddirection)
+        };
+        logger.debug("New Recording", newRecording);
+        await recordingstore.addRecording(stationId, newRecording);
+        response.redirect("/station/" + stationId);
+    },
 };
 
 module.exports = station;

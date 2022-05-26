@@ -6,7 +6,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
-
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
 app.engine('.hbs', handlebars.engine({extname: '.hbs'}));
 app.set('view engine', '.hbs');
 app.set('views', './views');

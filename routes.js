@@ -11,4 +11,6 @@ router.get('/station/:id', station.index);
 router.get('/station/:id/deleterecording/:recordingId', station.deleteRecording);
 router.get('/dashboard/deletestation/:station_id', dashboard.deleteStation);
 
+router.post('/station/:id/addrecording', station.addRecording);
+
 module.exports = router;
