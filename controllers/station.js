@@ -18,6 +18,14 @@ const station = {
         };
         response.render('station', viewData);
     },
+    async deleteRecording(request, response) {
+        logger.info("delete recording reached");
+        const stationId = request.params.id;
+        const recordingId = request.params.recordingId;
+        logger.info(`Deleting recording ${recordingId} from station ${stationId}`);
+        await recordingstore.removeRecording(recordingId);
+        response.redirect("/station/" + stationId);
+    },
 };
 
 module.exports = station;

@@ -11,6 +11,12 @@ const dashboard = {
     };
     logger.info("about to render", stations);
     response.render("dashboard", viewData);
+  },
+  async deleteStation(request, response) {
+    const station_id = request.params.station_id;
+    logger.info("deleting station", station_id);
+    await stationstore.deleteStation(station_id);
+    response.redirect("/dashboard/");
   }
 };
 
