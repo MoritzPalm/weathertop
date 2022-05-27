@@ -1,0 +1,17 @@
+<div class="border p-2 my-2">
+    <form action="/dashboard/addstation" method="POST">
+        <div class="mb-3">
+            <label for="inputName" class="form-label">Name Wetterstation</label>
+            <input placeholder="Name" type="text" class="form-control" id="inputName" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="inputLong" class="form-label">Längengrad</label>
+            <input placeholder="00.0000" type="number" step="any" class="form-control" id="inputLong" name="long">
+        </div>
+        <div class="mb-3">
+            <label for="inputLat" class="form-label">Breitengrad</label>
+            <input placeholder="00.000" type="number" step="any" class="form-control" id="inputLat" name="lat">
+        </div>
+        <button type="submit" class="btn btn-primary">Hinzufügen</button>
+    </form>
+</div>

@@ -24,7 +24,7 @@ const recordingStore = {
         }
     },
     async removeRecording(recordingId) {
-        const query = 'delete from recordings where id=$1';
+        const query = 'delete from recordings where rec_id=$1';
         const values = [recordingId];
         try {
             await dataStoreClient.query(query, values);

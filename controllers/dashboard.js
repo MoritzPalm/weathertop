@@ -17,7 +17,18 @@ const dashboard = {
     logger.info("deleting station", station_id);
     await stationstore.deleteStation(station_id);
     response.redirect("/dashboard/");
-  }
+  },
+  async addStation(request, response) {
+    const newStation = {
+      name: request.body.name,
+      longitude: request.body.long,
+      latitude: request.body.lat
+    };
+    logger.debug("Creating a new Station", newStation);
+    await stationstore.addStation(newStation);
+    response.redirect("/dashboard");
+  },
+
 };
 
 module.exports = dashboard;

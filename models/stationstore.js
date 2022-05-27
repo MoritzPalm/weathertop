@@ -3,8 +3,8 @@ const datastore = require("./datastore.js");
 const dataStoreClient = datastore.getDatastore();
 const stationstore = {
     async getAllStations() {
-        const query = 'select * from (select distinct on (station_id) * from station join recordings on station.id = ' +
-            'recordings.station_id order by station_id, created_at desc) as statrec order by created_at desc ';
+        const query = 'select * from (select distinct on (station.id) * from station full join recordings on station.id = ' +
+            'recordings.station_id order by station.id, created_at desc) as statrec order by created_at desc ';
         try {
             let result = await dataStoreClient.query(query);
             return result.rows;
@@ -30,7 +30,17 @@ const stationstore = {
         } catch (e) {
             logger.error("Error deleting station", e);
         }
-    }
+    },
+    async addStation(station) {
+        try {
+            const query = 'insert into station (name, long, lat) values ($1,$2,$3)';
+            const values = [station.name, station.longitude, station.latitude];
+            await dataStoreClient.query(query, values);
+        } catch (e) {
+            logger.error("Error cannot add station", e);
+        }
+    },
+
 };
 
 module.exports = stationstore;
