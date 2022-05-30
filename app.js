@@ -34,4 +34,13 @@ app.listen(process.env.PORT, () => {
     console.log(`Web App listening on ${process.env.PORT}`);
 });
 
+app.use(session({
+    secret: "This is a secret!",
+    cookie: {
+        maxAge: 3600000
+    },
+    resave: false,
+    saveUninitialized: false
+}));
+
 module.exports = app;

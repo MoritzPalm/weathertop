@@ -33,11 +33,22 @@ const stationstore = {
     },
     async addStation(station) {
         try {
-            const query = 'insert into station (name, long, lat) values ($1,$2,$3)';
-            const values = [station.name, station.longitude, station.latitude];
+            const query = 'insert into station (name, long, lat, user_id) values ($1,$2,$3,$4)';
+            const values = [station.name, station.longitude, station.latitude, station.user_id];
             await dataStoreClient.query(query, values);
         } catch (e) {
             logger.error("Error cannot add station", e);
+        }
+    },
+    async getUserStations(email) {
+        const query = 'select * from (select distinct on (station.id) * from station full join recordings on station.id = ' +
+            'recordings.station_id WHERE user_id=$1 order by station.id, created_at desc) as statrec order by created_at desc';
+        const values = [email];
+        try {
+            let result = await dataStoreClient.query(query, values);
+            return result.rows;
+        } catch (e) {
+            logger.error("Error fetching playlists for user: ", e);
         }
     },
 
