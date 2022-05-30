@@ -40,7 +40,7 @@ const stationstore = {
             logger.error("Error cannot add station", e);
         }
     },
-    async getUserPlaylists(email) {
+    async getUserStations(email) {
         const query = 'select * from (select distinct on (station.id) * from station full join recordings on station.id = ' +
             'recordings.station_id WHERE user_id=$1 order by station.id, created_at desc) as statrec order by created_at desc';
         const values = [email];

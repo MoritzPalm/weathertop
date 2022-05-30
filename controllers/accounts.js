@@ -46,7 +46,7 @@ const accounts = {
 
     async getCurrentUser(request) {
         const user = request.session.user;
-        return await userstore.getUserById(user);
+        return await userstore.getUserById(user.id);
     }
 };
 

@@ -27,7 +27,7 @@ const userStore = {
         }
     },
     async getUserById(id) {
-        logger.info(`Getting user ${id}`);
+        logger.info(`Getting user` + id);
         const query = 'SELECT * FROM weather_user WHERE email=$1';
         const values = [id];
         try {
