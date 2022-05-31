@@ -41,8 +41,7 @@ const stationstore = {
         }
     },
     async getUserStations(email) {
-        const query = 'select * from (select distinct on (station.id) * from station full join recordings on station.id = ' +
-            'recordings.station_id WHERE user_id=$1 order by station.id, created_at desc) as statrec order by created_at desc';
+        const query = 'select * from (select distinct on (s.id) * from station as s full join recordings as r on s.id = r.station_id where user_id=$1 order by s.id, created_at desc) as sr left outer join (select station_id, max(temp) as max_temp, min(temp) as min_temp, max(windspeed) as max_windspeed, min(windspeed) as min_windspeed, max(pressure) as max_pressure, min(pressure) as min_pressure from station as s2 join recordings as r2 on s2.id = r2.station_id group by station_id) as sr2 on sr2.station_id = sr.station_id'
         const values = [email];
         try {
             let result = await dataStoreClient.query(query, values);

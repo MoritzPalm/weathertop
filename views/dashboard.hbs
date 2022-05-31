@@ -8,6 +8,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{this.name}}</h5>
                             <p class="card-text">
+                                Lat: {{this.lat}}<br>
+                                Long: {{this.long}}
                             </p>
                         </div>
 
@@ -27,8 +29,10 @@
                 <div class ="col">
                     <div class="card text-white bg-dark mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Wetter</h5>
-                            <p class="card-text"> {{this.weather}}</p>
+                            <h5 class="card-title ">Wetter</h5>
+                            <p class="card-text">
+                                {{this.weather}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -36,7 +40,12 @@
                     <div class="card text-white bg-dark mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Temperatur</h5>
-                            <p class="card-text"> {{this.temp}}°</p>
+                            <p class="card-text"> {{this.temp}}°
+                            <br>
+                                Min: {{this.min_temp}}
+                            <br>
+                                Max: {{this.max_temp}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -44,7 +53,9 @@
                     <div class="card text-white bg-dark mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Windgeschwindigkeit</h5>
-                            <p class="card-text"> {{this.windspeed}} bft</p>
+                            <p class="card-text"> {{this.windspeed}} bft<br>
+                            Min: {{this.min_windspeed}}<br>
+                            Max: {{this.max_windspeed}} <br></p>
                         </div>
                     </div>
                 </div>
@@ -60,7 +71,10 @@
                     <div class="card text-white bg-dark mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Luftdruck</h5>
-                            <p class="card-text"> {{this.pressure}} hpa</p>
+                            <p class="card-text"> {{this.pressure}} hpa<br>
+                            Min: {{this.min_pressure}} <br>
+                                Max: {{this.max_pressure}}
+                            </p>
                         </div>
                     </div>
                 </div>
