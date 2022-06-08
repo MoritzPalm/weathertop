@@ -1,22 +1,22 @@
 {{> menu id="station"}}
 <div class="container">
-    <h1> {{station.name}}</h1>
-
-        {{#each currRecording}}
+    {{#unless currRecording}}
+        <h1> {{station.name}}</h1>
+    {{/unless}}
+    {{#if currRecording}}
         <div class="row">
             <div class="col">
                 <div class="card text-white bg-dark mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">{{name}}</h5>
+                        <h5 class="card-title">{{currRecording.name}}</h5>
                     </div>
-
                 </div>
             </div>
             <div class ="col">
                 <div class="card text-white bg-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Wetter</h5>
-                        <p class="card-text"> {{weather}}</p>
+                            <p class="card-text"> {{weathertext}}</p>
                     </div>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                 <div class="card text-white bg-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Temperatur</h5>
-                        <p class="card-text"> {{temp}} Grad</p>
+                        <p class="card-text"> {{currRecording.temp}} Grad</p>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,12 @@
                 <div class="card text-white bg-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Wind</h5>
-                        <p class="card-text"> {{wind}} bft</p>
+                        <p class="card-text">
+                            {{currRecording.windspeed}} bft <br>
+                            {{winddirection}} <br>
+                            Max:{{max_windspeed}} <br>
+                            Min: {{min_windspeed}}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -40,14 +45,12 @@
                 <div class="card text-white bg-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Luftdruck</h5>
-                        <p class="card-text"> {{pressure}} hpa</p>
+                        <p class="card-text"> {{currRecording.pressure}} hpa</p>
                     </div>
                 </div>
             </div>
         </div>
-        {{/each}}
-
-
+{{/if}}
     <table class="table">
         <thead>
         <tr>

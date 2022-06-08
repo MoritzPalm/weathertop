@@ -1,6 +1,7 @@
 const logger = require("../utils/logger.js");
 const stationstore = require("../models/stationstore.js");
 const accounts = require("./accounts.js");
+const weatherformat = require('../utils/weatherformatter.js')
 
 const dashboard = {
   async index(request, response) {

@@ -1,6 +1,7 @@
 const logger = require('../utils/logger');
 const stationStore = require('../models/stationstore.js');
 const recordingstore = require('../models/recordingstore.js')
+const weatherformat = require("../utils/weatherformatter");
 
 const station = {
     async index(request, response) {
@@ -9,12 +10,22 @@ const station = {
         const station = await stationStore.getStation(stationId)
         const recordings = await recordingstore.getRecordingsforStation(stationId)
         const currRecording = await recordingstore.getLatestRecordingsforStation(stationId)
-
+        let weathertext = 0
+        let winddirection = 0
+        if (currRecording[0] !== undefined) {
+            weathertext = weatherformat.code_to_text(currRecording[0].weather)
+            winddirection = weatherformat.degree_to_direction(currRecording[0].winddirection)
+        } else {
+            weathertext = 'not found'
+            winddirection = 'not found'
+        }
         const viewData = {
             title: 'Station',
             station: station,
-            currRecording: currRecording,
-            recordings: recordings
+            currRecording: currRecording[0],
+            recordings: recordings,
+            weathertext: weathertext,
+            winddirection: winddirection
         };
         response.render('station', viewData);
     },
