@@ -10,7 +10,7 @@
                             <p class="card-text">
                                 Lat: {{this.lat}}<br>
                                 Long: {{this.long}}
-                                Weathertext: {{weathertext}}
+
                             </p>
                         </div>
 
@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <h5 class="card-title ">Wetter</h5>
                             <p class="card-text">
-                                {{this.weather}}
+                                {{this.weathertext}}
                             </p>
                         </div>
                     </div>
@@ -55,19 +55,13 @@
                         <div class="card-body">
                             <h5 class="card-title">Windgeschwindigkeit</h5>
                             <p class="card-text"> {{this.windspeed}} bft<br>
-                            Min: {{this.min_windspeed}}<br>
+                            Richtung: {{this.winddirection}} <br>
+                                Min: {{this.min_windspeed}}<br>
                             Max: {{this.max_windspeed}} <br></p>
                         </div>
                     </div>
                 </div>
-                <div class ="col">
-                    <div class="card text-white bg-dark mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Windrichtung</h5>
-                            <p class="card-text"> {{this.winddirection}}°</p>
-                        </div>
-                    </div>
-                </div>
+
                 <div class ="col">
                     <div class="card text-white bg-dark mb-3">
                         <div class="card-body">

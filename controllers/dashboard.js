@@ -2,12 +2,26 @@ const logger = require("../utils/logger.js");
 const stationstore = require("../models/stationstore.js");
 const accounts = require("./accounts.js");
 const weatherformat = require('../utils/weatherformatter.js')
+const recordingstore = require("../models/recordingstore");
 
 const dashboard = {
   async index(request, response) {
     const loggedInUser = await accounts.getCurrentUser(request);
     logger.info("dashboard rendering");
-    const stations = await stationstore.getUserStations(loggedInUser.id);
+    let stations = await stationstore.getUserStations(loggedInUser.id);
+    let weathertext = 0
+    let winddirection = 0
+    for (let i = 0; i < stations.length; i++) {
+      if (stations[i] !== undefined) {
+        weathertext = weatherformat.code_to_text(stations[i].weather)
+        winddirection = weatherformat.degree_to_direction(stations[i].winddirection)
+      } else {
+        weathertext = 'not found'
+        winddirection = 'not found'
+      }
+      stations[i].weathertext = weathertext
+      stations[i].winddirection = winddirection
+    }
     const viewData = {
       title: "Dashboard",
       stations: stations,
