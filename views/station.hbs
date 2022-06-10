@@ -29,7 +29,10 @@
                     <i class="bi {{tempicon}} position-absolute top-0 end-0 m-3" style="font-size: 2rem; color:lightblue"></i>
                     <div class="card-body">
                         <h5 class="card-title">Temperatur</h5>
-                        <p class="card-text"> {{currRecording.temp}} Grad</p>
+                        <p class="card-text"> {{currRecording.temp}} °C <br>
+                            Min: {{currRecording.min_temp}} °C <br>
+                            Max: {{currRecording.max_temp}} °C
+                        </p>
                     </div>
                 </div>
             </div>
@@ -41,8 +44,8 @@
                         <p class="card-text">
                             {{currRecording.windspeed}} bft <br>
                             {{winddirection}} <br>
-                            Max:{{max_windspeed}} <br>
-                            Min: {{min_windspeed}}
+                            Min: {{currRecording.min_windspeed}} bft<br>
+                            Max: {{currRecording.max_windspeed}} bft
                         </p>
                     </div>
                 </div>
@@ -52,7 +55,10 @@
                     <i class="bi bi-speedometer position-absolute top-0 end-0 m-3" style="font-size: 2rem; color:yellow"></i>
                     <div class="card-body">
                         <h5 class="card-title">Luftdruck</h5>
-                        <p class="card-text"> {{currRecording.pressure}} hpa</p>
+                        <p class="card-text"> {{currRecording.pressure}} hPa <br>
+                            Min: {{currRecording.min_pressure}} hPa<br>
+                            Max: {{currRecording.max_pressure}} hPa
+                        </p>
                     </div>
                 </div>
             </div>

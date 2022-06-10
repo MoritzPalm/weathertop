@@ -14,7 +14,7 @@ const recordingStore = {
         }
     },
     async getLatestRecordingsforStation(stationId) {
-        const query = 'select * from recordings join station on station.id = recordings.station_id where station_id=$1 order by created_at desc limit 1';
+        const query = 'select * from (select station_id, max(temp) as max_temp, min(temp) as min_temp, max(pressure) as max_pressure, min(pressure) as min_pressure, max(windspeed) as max_windspeed, min(windspeed) as min_windspeed from recordings group by station_id having station_id = $1) as r1 join (select * from recordings) as r2 on r1.station_id=r2.station_id join station on station.id = r1.station_id where r1.station_id=11 order by created_at desc limit 1';
         const values = [stationId];
         try {
             let result = await dataStoreClient.query(query, values);
