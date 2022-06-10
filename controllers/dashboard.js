@@ -12,11 +12,13 @@ const dashboard = {
     let weathertext = 0
     let winddirection = 0
     let weathericon = 0
+    let tempicon = 0
     for (let i = 0; i < stations.length; i++) {
       if (stations[i] !== undefined) {
         weathertext = weatherformat.code_to_text(stations[i].weather)
         winddirection = weatherformat.degree_to_direction(stations[i].winddirection)
-        weathericon = weatherformat.code_to_icon(stations[i].weather)
+        weathericon = weatherformat.weathercode_to_icon(stations[i].weather)
+        tempicon = weatherformat.tempcode_to_icon(stations[i].temp)
       } else {
         weathertext = 'not found'
         winddirection = 'not found'
@@ -25,6 +27,7 @@ const dashboard = {
       stations[i].weathertext = weathertext
       stations[i].winddirection = winddirection
       stations[i].weathericon = weathericon
+      stations[i].tempicon = tempicon
     }
     const viewData = {
       title: "Dashboard",

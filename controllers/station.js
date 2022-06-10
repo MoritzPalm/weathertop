@@ -16,7 +16,7 @@ const station = {
         if (currRecording[0] !== undefined) {
             weathertext = weatherformat.code_to_text(currRecording[0].weather)
             winddirection = weatherformat.degree_to_direction(currRecording[0].winddirection)
-            weathericon = weatherformat.code_to_icon(currRecording[0].weather)
+            weathericon = weatherformat.weathercode_to_icon(currRecording[0].weather)
         } else {
             weathertext = 'not found'
             winddirection = 'not found'
