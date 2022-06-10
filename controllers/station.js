@@ -13,14 +13,17 @@ const station = {
         let weathertext = 0
         let winddirection = 0
         let weathericon = 0
+        let tempicon = 0
         if (currRecording[0] !== undefined) {
             weathertext = weatherformat.code_to_text(currRecording[0].weather)
             winddirection = weatherformat.degree_to_direction(currRecording[0].winddirection)
             weathericon = weatherformat.weathercode_to_icon(currRecording[0].weather)
+            tempicon = weatherformat.tempcode_to_icon(currRecording[0].temp)
         } else {
             weathertext = 'not found'
             winddirection = 'not found'
             weathericon = 'error'
+            tempicon = 'error'
         }
         const viewData = {
             title: 'Station',
@@ -29,7 +32,8 @@ const station = {
             recordings: recordings,
             weathertext: weathertext,
             winddirection: winddirection,
-            weathericon: weathericon
+            weathericon: weathericon,
+            tempicon: tempicon
         };
         response.render('station', viewData);
     },
