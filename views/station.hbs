@@ -6,14 +6,17 @@
     {{#if currRecording}}
         <div class="row">
             <div class="col">
-                <div class="card text-white bg-dark mb-3">
+                <div class="card text-white bg-dark mb-3 h-100">
                     <div class="card-body">
                         <h5 class="card-title">{{currRecording.name}}</h5>
+                        <p class="card-text"> Lat: {{station.lat}} <br>
+                            Long: {{station.long}}
+                        </p>
                     </div>
                 </div>
             </div>
             <div class ="col">
-                <div class="card text-white bg-dark mb-3">
+                <div class="card text-white bg-dark mb-3 h-100">
                     <div class="card-body">
                         <h5 class="card-title">Wetter</h5>
                             <p class="card-text"> {{weathertext}}</p>
@@ -21,7 +24,7 @@
                 </div>
             </div>
             <div class ="col">
-                <div class="card text-white bg-dark mb-3">
+                <div class="card text-white bg-dark mb-3 h-100">
                     <div class="card-body">
                         <h5 class="card-title">Temperatur</h5>
                         <p class="card-text"> {{currRecording.temp}} Grad</p>
@@ -29,7 +32,7 @@
                 </div>
             </div>
             <div class ="col">
-                <div class="card text-white bg-dark mb-3">
+                <div class="card text-white bg-dark mb-3 h-100">
                     <div class="card-body">
                         <h5 class="card-title">Wind</h5>
                         <p class="card-text">
@@ -42,7 +45,7 @@
                 </div>
             </div>
             <div class ="col">
-                <div class="card text-white bg-dark mb-3">
+                <div class="card text-white bg-dark mb-3 h-100">
                     <div class="card-body">
                         <h5 class="card-title">Luftdruck</h5>
                         <p class="card-text"> {{currRecording.pressure}} hpa</p>

@@ -12,12 +12,15 @@ const station = {
         const currRecording = await recordingstore.getLatestRecordingsforStation(stationId)
         let weathertext = 0
         let winddirection = 0
+        let weathericon = 0
         if (currRecording[0] !== undefined) {
             weathertext = weatherformat.code_to_text(currRecording[0].weather)
             winddirection = weatherformat.degree_to_direction(currRecording[0].winddirection)
+            weathericon = weatherformat.code_to_icon(currRecording[0].weather)
         } else {
             weathertext = 'not found'
             winddirection = 'not found'
+            weathericon = 'error'
         }
         const viewData = {
             title: 'Station',
@@ -25,7 +28,8 @@ const station = {
             currRecording: currRecording[0],
             recordings: recordings,
             weathertext: weathertext,
-            winddirection: winddirection
+            winddirection: winddirection,
+            weathericon: weathericon
         };
         response.render('station', viewData);
     },

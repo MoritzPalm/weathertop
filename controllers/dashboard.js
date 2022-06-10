@@ -11,16 +11,20 @@ const dashboard = {
     let stations = await stationstore.getUserStations(loggedInUser.id);
     let weathertext = 0
     let winddirection = 0
+    let weathericon = 0
     for (let i = 0; i < stations.length; i++) {
       if (stations[i] !== undefined) {
         weathertext = weatherformat.code_to_text(stations[i].weather)
         winddirection = weatherformat.degree_to_direction(stations[i].winddirection)
+        weathericon = weatherformat.code_to_icon(stations[i].weather)
       } else {
         weathertext = 'not found'
         winddirection = 'not found'
+        weathericon= 'error'
       }
       stations[i].weathertext = weathertext
       stations[i].winddirection = winddirection
+      stations[i].weathericon = weathericon
     }
     const viewData = {
       title: "Dashboard",
