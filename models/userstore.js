@@ -5,7 +5,7 @@ const logger = require("../utils/logger.js");
 const userStore = {
     async addUser(user) {
         const query = 'INSERT INTO weather_user (email, last_name, first_name, password) VALUES($1, $2, $3, $4)';
-        const values = [user.email, user.last_name, user.first_name, user.password];
+        const values = [user.email, user.lastName, user.firstName, user.password];
         try {
             await dataStoreClient.query(query, values);
         } catch (e) {
