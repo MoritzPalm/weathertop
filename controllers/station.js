@@ -3,6 +3,7 @@ const stationStore = require('../models/stationstore.js');
 const recordingstore = require('../models/recordingstore')
 const weatherformat = require("../utils/weatherformatter");
 const trendcalc = require("../utils/TrendCalculator");
+const axios = require("axios");
 
 const station = {
     async index(request, response) {
@@ -63,6 +64,29 @@ const station = {
         };
         logger.debug("New Recording", newRecording);
         await recordingstore.addRecording(stationId, newRecording);
+        response.redirect("/station/" + stationId);
+    },
+    async addAutoRecording(request, response) {
+        const stationId = request.params.id;
+        const stationData = await stationStore.getStation(stationId);
+        if (stationData !== undefined) {
+            const lat = stationData.lat;
+            const long = stationData.long;
+            const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=da9295bc840e8c70ce1e35ff8cb8d18a`;
+            const result = await axios.get(requestUrl);
+            if (result.status === 200) {
+                const reading = result.data.current;
+                const newRecording = {
+                    station_id: stationId,
+                    weather: Math.floor(reading.weather[0].id /100) *100,
+                    temp: reading.temp,
+                    windspeed: reading.wind_speed,
+                    pressure: reading.pressure,
+                    winddirection: reading.wind_deg
+                }
+                await recordingstore.addRecording(stationId, newRecording);
+            }
+        }
         response.redirect("/station/" + stationId);
     },
 };

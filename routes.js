@@ -22,5 +22,6 @@ router.post('/dashboard/addstation', auth.protected, dashboard.addStation);
 router.get('/station/:id', auth.protected, station.index);
 router.get('/station/:id/deleterecording/:recordingId', auth.protected, station.deleteRecording);
 router.post('/station/:id/addrecording', auth.protected, station.addRecording);
+router.post('/station/:id/addautorecording', auth.protected, station.addAutoRecording);
 
 module.exports = router;
