@@ -1,7 +1,8 @@
 const logger = require('../utils/logger');
 const stationStore = require('../models/stationstore.js');
-const recordingstore = require('../models/recordingstore.js')
+const recordingstore = require('../models/recordingstore')
 const weatherformat = require("../utils/weatherformatter");
+const trendcalc = require("../utils/TrendCalculator");
 
 const station = {
     async index(request, response) {
@@ -10,6 +11,8 @@ const station = {
         const station = await stationStore.getStation(stationId)
         const recordings = await recordingstore.getRecordingsforStation(stationId)
         const currRecording = await recordingstore.getLatestRecordingsforStation(stationId)
+        const TrendRecordings = await recordingstore.getTrendRecordings(stationId)
+        let trends = trendcalc.calculateTrends(TrendRecordings)
         let weathertext = 0
         let winddirection = 0
         let weathericon = 0
@@ -19,6 +22,9 @@ const station = {
             winddirection = weatherformat.degree_to_direction(currRecording[0].winddirection)
             weathericon = weatherformat.weathercode_to_icon(currRecording[0].weather)
             tempicon = weatherformat.tempcode_to_icon(currRecording[0].temp)
+            currRecording[0].temptrend = trends[0]
+            currRecording[0].windspeedtrend = trends[1]
+            currRecording[0].pressuretrend = trends[2]
         } else {
             weathertext = 'not found'
             winddirection = 'not found'
@@ -33,7 +39,7 @@ const station = {
             weathertext: weathertext,
             winddirection: winddirection,
             weathericon: weathericon,
-            tempicon: tempicon
+            tempicon: tempicon,
         };
         response.render('station', viewData);
     },

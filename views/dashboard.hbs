@@ -39,6 +39,7 @@
                 <div class ="col">
                     <div class="card text-white bg-dark mb-3 h-100">
                         <i class="bi {{this.tempicon}} position-absolute top-0 end-0 m-3" style="font-size: 2rem; color:lightblue"></i>
+                        <i class="bi {{this.temptrend}} position-absolute top-0 end-0 mt-5 p-2" style="font-size: 2rem; color:lightblue"></i>
                         <div class="card-body">
                             <h5 class="card-title">Temperatur</h5>
                             <p class="card-text"> {{this.temp}}°
@@ -53,6 +54,7 @@
                 <div class ="col">
                     <div class="card text-white bg-dark mb-3 h-100">
                         <i class="bi bi-wind position-absolute top-0 end-0 m-3" style="font-size: 2rem; color:orange"></i>
+                        <i class="bi {{this.windspeedtrend}} position-absolute top-0 end-0 mt-5 p-2" style="font-size: 2rem; color:orange"></i>
                         <div class="card-body">
                             <h5 class="card-title">Wind</h5>
                             <p class="card-text"> {{this.windspeed}} bft<br>
@@ -66,6 +68,7 @@
                 <div class ="col">
                     <div class="card text-white bg-dark mb-3 h-100">
                         <i class="bi bi-speedometer position-absolute top-0 end-0 m-3" style="font-size: 2rem; color:yellow"></i>
+                        <i class="bi {{this.pressuretrend}} position-absolute top-0 end-0 mt-5 p-2" style="font-size: 2rem; color:yellow"></i>
                         <div class="card-body">
                             <h5 class="card-title">Luftdruck</h5>
 
