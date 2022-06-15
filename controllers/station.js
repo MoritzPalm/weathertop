@@ -72,19 +72,21 @@ const station = {
         if (stationData !== undefined) {
             const lat = stationData.lat;
             const long = stationData.long;
-            const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=da9295bc840e8c70ce1e35ff8cb8d18a`;
-            const result = await axios.get(requestUrl);
-            if (result.status === 200) {
-                const reading = result.data.current;
-                const newRecording = {
-                    station_id: stationId,
-                    weather: Math.floor(reading.weather[0].id /100) *100,
-                    temp: reading.temp,
-                    windspeed: reading.wind_speed,
-                    pressure: reading.pressure,
-                    winddirection: reading.wind_deg
+            if (lat >= -90 && lat <= 90 && long >= -90 && long <= 90) {
+                const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=da9295bc840e8c70ce1e35ff8cb8d18a`;
+                const result = await axios.get(requestUrl);
+                if (result.status === 200) {
+                    const reading = result.data.current;
+                    const newRecording = {
+                        station_id: stationId,
+                        weather: Math.floor(reading.weather[0].id / 100) * 100,
+                        temp: reading.temp,
+                        windspeed: reading.wind_speed,
+                        pressure: reading.pressure,
+                        winddirection: reading.wind_deg
+                    }
+                    await recordingstore.addRecording(stationId, newRecording);
                 }
-                await recordingstore.addRecording(stationId, newRecording);
             }
         }
         response.redirect("/station/" + stationId);

@@ -1,10 +1,7 @@
-const recordingstore = require('../models/recordingstore.js');
-
-const directions = ['Nord', 'Nord Nord Ost', 'Nord Ost', 'Ost Nord Ost', 'Ost', 'Ost Süd Ost', 'Süd Ost', 'Süd Süd Ost',
-    'Süd', 'Süd Süd West', 'Süd West', 'West Süd West', 'West', 'West Nord West', 'Nord West', 'Nord Nord West'];
-
 const weatherformat = {
     degree_to_direction(degree) {
+        const directions = ['Nord', 'Nord Nord Ost', 'Nord Ost', 'Ost Nord Ost', 'Ost', 'Ost Süd Ost', 'Süd Ost', 'Süd Süd Ost',
+            'Süd', 'Süd Süd West', 'Süd West', 'West Süd West', 'West', 'West Nord West', 'Nord West', 'Nord Nord West'];
         const i = Math.round(degree/22.5) % 16;
         return directions[i];
     },

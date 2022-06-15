@@ -8,7 +8,7 @@ const dbConfig = {
     ssl: { rejectUnauthorized: false }
 }
 
-if (conString == undefined) {
+if (conString === undefined) {
     logger.error("ERROR: environment variable DB_CON_STRING not set.");
     process.exit(1);
 }

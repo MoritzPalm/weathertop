@@ -29,9 +29,9 @@ const dashboard = {
           trends = [0,0,0]
         }
       } else {
-        weathertext = 'not found'
-        winddirection = 'not found'
-        weathericon= 'error'
+        weathertext = '-'
+        winddirection = '-'
+        weathericon= '-'
         trends = [0,0,0]
       }
       stations[i].weathertext = weathertext
