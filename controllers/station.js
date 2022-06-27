@@ -73,7 +73,7 @@ const station = {
             const lat = stationData.lat;
             const long = stationData.long;
             if (lat >= -90 && lat <= 90 && long >= -90 && long <= 90) {
-                const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=da9295bc840e8c70ce1e35ff8cb8d18a`;
+                const requestUrl = process.env.API_Token;
                 const result = await axios.get(requestUrl);
                 if (result.status === 200) {
                     const reading = result.data.current;
