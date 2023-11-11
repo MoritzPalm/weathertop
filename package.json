@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {},
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "body-parser": "^1.20.0",
     "bootstrap-icons": "^1.8.3",
     "bootstrap-icons-font": "^2.0.7",
